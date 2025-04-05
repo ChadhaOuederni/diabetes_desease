@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction du diabète</title>
+</head>
+<body>
+    <h1>Formulaire de prédiction</h1>
+    <form action="/predict" method="post">
+        <label for="pregnancies">Nombre de grossesses :</label>
+        <input type="number" id="pregnancies" name="pregnancies" required><br><br>
+
+        <label for="glucose">Niveau de glucose :</label>
+        <input type="number" id="glucose" name="glucose" required><br><br>
+
+        <label for="blood_pressure">Pression sanguine :</label>
+        <input type="number" id="blood_pressure" name="blood_pressure" required><br><br>
+
+        <label for="skin_thickness">Épaisseur de la peau :</label>
+        <input type="number" id="skin_thickness" name="skin_thickness" required><br><br>
+
+        <label for="insulin">Niveau d'insuline :</label>
+        <input type="number" id="insulin" name="insulin" required><br><br>
+
+        <label for="bmi">Indice de masse corporelle (BMI) :</label>
+        <input type="number" id="bmi" name="bmi" required><br><br>
+
+        <label for="diabetes_pedigree_function">Fonction de pedigree diabétique :</label>
+        <input type="number" id="diabetes_pedigree_function" name="diabetes_pedigree_function" required><br><br>
+
+        <label for="age">Âge :</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <button type="submit">Prédire</button>
+    </form>
+</body>
+</html>
