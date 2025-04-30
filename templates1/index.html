@@ -4,35 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prédiction du diabète</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .wrapper {
+            display: flex;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .image-container {
+            flex: 1;
+            background: #f1f1f1;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .form-container {
+            flex: 1;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00B8C9;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #00B8C9;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00B8C9;
+        }
+
+        @media (max-width: 768px) {
+            .wrapper {
+                flex-direction: column;
+            }
+
+            .image-container {
+                height: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Formulaire de prédiction</h1>
-    <form action="/predict" method="post">
-        <label for="pregnancies">Nombre de grossesses :</label>
-        <input type="number" id="pregnancies" name="pregnancies" required><br><br>
+    <div class="wrapper">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='diabetes-concept-man-holds-hand-meter-measures-blood-sugar-level-blood-drop-test-strip-medical-diagnostics-home-vector-illustration-flat-design_153097-594.png') }}" alt="Diabète">
+        </div>
+        <div class="form-container">
+            <h1>Prédiction du diabète</h1>
+            <form action="/predict" method="post">
+                <label for="pregnancies">Nombre de grossesses :</label>
+                <input type="number" id="pregnancies" name="pregnancies" required>
 
-        <label for="glucose">Niveau de glucose :</label>
-        <input type="number" id="glucose" name="glucose" required><br><br>
+                <label for="glucose">Niveau de glucose :</label>
+                <input type="number" id="glucose" name="glucose" required>
 
-        <label for="blood_pressure">Pression sanguine :</label>
-        <input type="number" id="blood_pressure" name="blood_pressure" required><br><br>
+                <label for="blood_pressure">Pression sanguine :</label>
+                <input type="number" id="blood_pressure" name="blood_pressure" required>
 
-        <label for="skin_thickness">Épaisseur de la peau :</label>
-        <input type="number" id="skin_thickness" name="skin_thickness" required><br><br>
+                <label for="insulin">Niveau d'insuline :</label>
+                <input type="number" id="insulin" name="insulin" required>
 
-        <label for="insulin">Niveau d'insuline :</label>
-        <input type="number" id="insulin" name="insulin" required><br><br>
+                <label for="bmi">Indice de masse corporelle (BMI) :</label>
+                <input type="number" step="any" id="bmi" name="bmi" required>
 
-        <label for="bmi">Indice de masse corporelle (BMI) :</label>
-        <input type="number" id="bmi" name="bmi" required><br><br>
+                <label for="diabetes_pedigree_function">Fonction de pedigree diabétique :</label>
+                <input type="number" step="any" id="diabetes_pedigree_function" name="diabetes_pedigree_function" required>
 
-        <label for="diabetes_pedigree_function">Fonction de pedigree diabétique :</label>
-        <input type="number" id="diabetes_pedigree_function" name="diabetes_pedigree_function" required><br><br>
+                <label for="age">Âge :</label>
+                <input type="number" id="age" name="age" required>
 
-        <label for="age">Âge :</label>
-        <input type="number" id="age" name="age" required><br><br>
-
-        <button type="submit">Prédire</button>
-    </form>
+                <button type="submit">Prédire</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

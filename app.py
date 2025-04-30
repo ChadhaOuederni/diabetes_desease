@@ -7,7 +7,8 @@ app = Flask(__name__ ,template_folder="templates1")
 
 # Charger le modèle de prédiction
 try:
-    model = joblib.load('diabetes_model.pkl')  # Chemin vers votre modèle sauvegardé
+    model = joblib.load('C:/Users/chadh/diabetes_desease/xgb.pkl')
+  # Chemin vers votre modèle sauvegardé
 except FileNotFoundError:
     raise Exception("Le modèle 'diabetes_model.pkl' n'a pas été trouvé. Veuillez vérifier le chemin du fichier.")
 
@@ -24,23 +25,22 @@ def predict():
         pregnancies = float(request.form['pregnancies'])
         glucose = float(request.form['glucose'])
         blood_pressure = float(request.form['blood_pressure'])
-        skin_thickness = float(request.form['skin_thickness'])
         insulin = float(request.form['insulin'])
         bmi = float(request.form['bmi'])
         diabetes_pedigree_function = float(request.form['diabetes_pedigree_function'])
         age = int(request.form['age'])
 
         # Créer un tableau avec les données utilisateur
-        input_data = np.array([[pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, diabetes_pedigree_function, age]])
+        input_data = np.array([[pregnancies, glucose, blood_pressure,  insulin, bmi, diabetes_pedigree_function, age]])
 
         # Effectuer la prédiction avec le modèle
         prediction = model.predict(input_data)
 
-        if prediction[0] == 0:
-
-          result = 'Vous êtes malade (diabète).'
-        else: 
-            result='Vous n\'êtes pas malade (pas de diabète).'  
+        if prediction[0] == 1:
+         result = 'Vous êtes malade (diabète).'
+        else:
+         result = 'Vous n\'êtes pas malade (pas de diabète).'
+ 
         # Affichage du résultat et log
         print("Affichage du résultat:", result) 
 
